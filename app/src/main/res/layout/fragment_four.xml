@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.home.HomeActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mvvm.ui.home.task4.FourViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#245678"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textTaskOneResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.result}" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/red_basic"
+            android:gravity="center"
+            android:minHeight="@dimen/min_height_global_button"
+            android:onClick="@{(view)->viewModel.onActionTaskFourToNewsClicked()}"
+            android:text="@string/home_click_me" />
+
+
+    </LinearLayout>
+
+</layout>

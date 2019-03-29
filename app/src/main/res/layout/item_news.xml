@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+
+        <variable
+            name="imageUrl"
+            type="String" />
+
+
+        <variable
+            name="onItemClickedListener"
+            type="com.mvvm.global.listener.OnItemClickedListener" />
+
+
+        <variable
+            name="placeHolder"
+            type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="picasso"
+            type="com.squareup.picasso.Picasso" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view)->onItemClickedListener.onItemClicked(title)}"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageItemNewsPicture"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_news_image"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{imageUrl}"
+            app:placeholder="@{placeHolder}"
+            app:picasso="@{picasso}"
+            tools:src="@mipmap/ic_launcher" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textItemNewsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_global_12dp"
+            android:text="@{title}"
+
+            android:textSize="@dimen/font_16sp" />
+
+    </LinearLayout>
+
+
+</layout>

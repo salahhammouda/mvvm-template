@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.home.news.NewsActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.mvvm.global.enumeration.State" />
+
+        <variable
+            name="viewModel"
+            type="com.mvvm.ui.home.news.NewsViewModel" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.mvvm.ui.view.CustomToolbar
+            android:id="@+id/toolbarNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ch_status_color="@color/red_basic"
+            app:ct_has_title="false"
+            app:ct_start_action_text="@string/global_cancel"
+            app:ct_start_action_text_font="@font/sf_ui_text_bold"
+            app:onActionClicked="@{viewModel}" />
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbarNews"
+            app:onRefreshListener="@{() -> viewModel.onRefresh()}"
+            app:refreshing="@{viewModel.isRefreshing()}">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerNews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:pagedListAdapterData="@{viewModel.newsList}"
+                app:pagedListAdapterState="@{viewModel.getState()}"
+                tools:listitem="@layout/item_news" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.mvvm.ui.view.CustomProgressBar
+            android:id="@+id/progressNewsContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{(viewModel.isEmptyLoading()) ? View.VISIBLE : View.INVISIBLE}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textNewsError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:onClick="@{(view) ->viewModel.onRetry()}"
+            android:text="@string/global_error_retry_message"
+            android:visibility="@{(viewModel.isEmptyError()) ? View.VISIBLE : View.INVISIBLE}" />
+
+
+    </RelativeLayout>
+
+
+</layout>

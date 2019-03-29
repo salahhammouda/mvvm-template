@@ -1,0 +1,142 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+        <item name="android:textColor">@color/black_basic</item>
+        <item name="android:windowBackground">@color/white_basic</item>
+    </style>
+
+    <style name="SplashFullScreen" parent="@style/AppTheme">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <style name="AppThemeStatusBarRed" parent="@style/AppTheme" />
+
+    <style name="AppTheme.Transparent" parent="AppTheme">
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="WindowTitleStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/black_basic</item>
+    </style>
+
+    <style name="DialogButtonStyle" parent="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/color_accent</item>
+        <item name="android:textSize">@dimen/font_16sp</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowTitleStyle">@style/WindowTitleStyle</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:textColor">@color/black_basic</item>
+        <item name="buttonBarButtonStyle">@style/DialogButtonStyle</item>
+    </style>
+
+    <style name="CustomAlertDialogStyle">
+        <item name="android:bottomBright">@android:color/transparent</item>
+        <item name="android:bottomDark">@android:color/transparent</item>
+        <item name="android:bottomMedium">@android:color/transparent</item>
+        <item name="android:centerBright">@android:color/transparent</item>
+        <item name="android:centerDark">@android:color/transparent</item>
+        <item name="android:centerMedium">@android:color/transparent</item>
+        <item name="android:fullBright">@android:color/transparent</item>
+        <item name="android:fullDark">@android:color/transparent</item>
+        <item name="android:topBright">@android:color/transparent</item>
+        <item name="android:topDark">@android:color/transparent</item>
+    </style>
+
+    <style name="ProgressDialogStyle" parent="android:Theme.Holo.Dialog">
+        <item name="android:alertDialogStyle">@style/CustomAlertDialogStyle</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:textColor">@color/black_basic</item>
+    </style>
+
+
+    <!--Buttons-->
+    <style name="Button" />
+    <style name="Button.AppRoundedCornersButton" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">@dimen/font_17sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:paddingStart">@dimen/padding_global_10dp</item>
+        <item name="android:paddingEnd">@dimen/padding_global_10dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">@dimen/font_12sp</item>
+        <item name="autoSizeMaxTextSize">@dimen/font_17sp</item>
+        <item name="autoSizeStepGranularity">@dimen/font_2sp</item>
+    </style>
+
+
+    <style name="Button.SignInAccount" parent="Button.AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_light_blue</item>
+        <item name="android:minHeight">@dimen/min_height_global_button</item>
+        <item name="android:minWidth">@dimen/min_width_global_button</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+        <item name="android:textColor">@color/white_basic</item>
+    </style>
+
+    <style name="Button.GlobalGreen" parent="Button.AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_green</item>
+        <item name="android:minHeight">@dimen/min_height_global_button</item>
+        <item name="android:minWidth">@dimen/min_width_global_button</item>
+        <item name="android:textColor">@color/white_basic</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+
+    <style name="Button.GlobalGray" parent="Button.AppRoundedCornersButton">
+        <item name="android:background">@drawable/solid_background_light_grey</item>
+        <item name="android:minHeight">@dimen/min_height_global_button</item>
+        <item name="android:minWidth">@dimen/min_width_global_button</item>
+        <item name="android:textColor">@color/white_basic</item>
+        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
+    </style>
+
+    <!--TextView-->
+    <style name="TextView" />
+    <style name="TextView.GlobalWhite" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white_basic</item>
+        <item name="android:textSize">@dimen/font_15sp</item>
+        <item name="android:fontFamily">@font/sf_ui_text_bold</item>
+    </style>
+
+    <!--TextView-->
+    <style name="TextView.GlobalBlack" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/black_basic</item>
+        <item name="android:textSize">@dimen/font_15sp</item>
+        <item name="android:fontFamily">@font/sf_ui_text_bold</item>
+    </style>
+
+
+    <!--EditText-->
+    <style name="EditText" />
+    <style name="EditText.GlobalTextForm" parent="@style/EditText.AppEditText">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/gray_graphite</item>
+        <item name="android:textColorHint">@color/grey_basic</item>
+        <item name="android:textSize">@dimen/font_17sp</item>
+        <item name="android:paddingStart">@dimen/padding_global_10dp</item>
+        <item name="android:paddingEnd">@dimen/padding_global_10dp</item>
+
+    </style>
+
+    <style name="EditText.AppEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+</resources>

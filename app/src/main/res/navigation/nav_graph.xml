@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/task1">
+
+    <fragment
+        android:id="@+id/task1"
+        android:name="com.mvvm.ui.home.task1.OneFragment"
+        tools:layout="@layout/fragment_one">
+        <action
+            android:id="@+id/action_task1_to_task4"
+            app:destination="@id/task4"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/task1">
+            <argument
+                android:name="var1"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/task2"
+        android:name="com.mvvm.ui.home.task2.TwoFragment"
+        tools:layout="@layout/fragment_two">
+        <action
+            android:id="@+id/action_task2_to_task4"
+            app:destination="@id/task4"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/task2">
+            <argument
+                android:name="var1"
+                app:argType="string" />
+
+            <argument
+                android:name="var2"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/task3"
+        android:name="com.mvvm.ui.home.task3.ThreeFragment"
+        tools:layout="@layout/fragment_two">
+
+        <argument
+            android:name="var1"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_task3_to_news"
+            app:destination="@id/news">
+
+            <argument
+                android:name="var1"
+                app:argType="string" />
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/task4"
+        android:name="com.mvvm.ui.home.task4.FourFragment">
+
+        <argument
+            android:name="var1"
+            app:argType="string" />
+
+        <argument
+            android:name="var2"
+            android:defaultValue="defaultValue"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_task4_to_news"
+            app:destination="@id/news">
+
+            <argument
+                android:name="var1"
+                app:argType="string" />
+
+
+        </action>
+
+    </fragment>
+
+    <activity
+        android:id="@+id/news"
+        android:name="com.mvvm.ui.home.news.NewsActivity"
+        tools:layout="@layout/activity_news">
+
+        <argument
+            android:name="var1"
+            app:argType="string" />
+
+
+    </activity>
+
+</navigation>

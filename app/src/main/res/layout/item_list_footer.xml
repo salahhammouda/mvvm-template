@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.mvvm.global.enumeration.State" />
+
+        <variable
+            name="retryListener"
+            type="com.mvvm.global.listener.RetryListener" />
+
+        <variable
+            name="state"
+            type="com.mvvm.global.enumeration.State" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_global_20dp">
+
+        <com.mvvm.ui.view.CustomProgressBar
+            android:id="@+id/progressFooter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{(state==State.LOADING) ? View.VISIBLE : View.INVISIBLE}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textItemListFooterError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:onClick="@{(view)->retryListener.onRetry()}"
+            android:text="@string/global_error_retry_message"
+            android:visibility="@{(state==State.ERROR) ? View.VISIBLE : View.INVISIBLE}" />
+
+    </RelativeLayout>
+
+</layout>

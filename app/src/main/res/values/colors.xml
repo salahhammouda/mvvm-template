@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_primary">#f9556b</color>
+    <color name="color_primary_dark">#E40421</color>
+    <color name="color_accent">#E68080</color>
+
+    <color name="white_basic">@android:color/white</color>
+    <color name="black_basic">@android:color/black</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <!-- toolbar colors -->
+    <color name="red_basic">#E40421</color>
+    <color name="blue_basic">#3B5998</color>
+    <color name="blue_light">#1E88E5</color>
+
+    <color name="green_basic">#62B700</color>
+
+    <color name="grey_basic">#c4c3c3</color>
+    <color name="grey_light">#EDEDED</color>
+    <color name="gray_graphite">#6B6B6B</color>
+    <color name="gray_cloud">#D8D8D8</color>
+    <color name="gray_silver">#cad0d1</color>
+    <color name="gray_charcoal">#4A4A4A</color>
+
+</resources>

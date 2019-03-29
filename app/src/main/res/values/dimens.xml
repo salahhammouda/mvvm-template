@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- snack bar  height -->
+    <dimen name="height_global_snack_bar">50dp</dimen>
+
+    <dimen name="min_width_global_button">275dp</dimen>
+    <dimen name="min_height_global_button">60dp</dimen>
+    <dimen name="radius_global_button">6dp</dimen>
+    <dimen name="height_global_edit">50dp</dimen>
+    <dimen name="height_news_image">200dp</dimen>
+
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    tools:context=".ui.home.HomeActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mvvm.ui.home.task3.ThreeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#6578"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textTaskThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.result}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/red_basic"
+            android:gravity="center"
+            android:minHeight="@dimen/min_height_global_button"
+            android:onClick="@{(view)->viewModel.onActionTaskThreeToNewsClicked()}"
+            android:text="@string/home_click_me" />
+
+    </LinearLayout>
+
+</layout>

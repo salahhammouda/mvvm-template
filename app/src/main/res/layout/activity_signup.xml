@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.signin.SignInActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mvvm.ui.signup.SignUpViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_basic"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <com.mvvm.ui.view.CustomToolbar
+            android:id="@+id/toolbarSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ct_background="@color/white_basic"
+            app:ct_has_title="false"
+            app:ct_start_action_text="@string/global_cancel"
+            app:ct_start_action_text_font="@font/sf_ui_text_regular"
+            app:onActionClicked="@{viewModel}" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/red_basic"
+            android:fillViewport="true"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_basic"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextView.GlobalBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/margin_global_40dp"
+                        android:layout_marginEnd="@dimen/margin_global_40dp"
+                        android:layout_marginBottom="@dimen/margin_global_20dp"
+                        android:gravity="center"
+                        android:text="@string/signin_description_title" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/margin_global_40dp"
+                    android:layout_marginTop="@dimen/margin_global_30dp"
+                    android:layout_marginEnd="@dimen/margin_global_40dp"
+                    android:layout_marginBottom="@dimen/margin_global_5dp"
+                    android:layout_weight="7"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextView.GlobalWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="@dimen/margin_global_20dp"
+                        android:gravity="center"
+                        android:text="@string/signup_not_sign_up" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editSignupName"
+                        style="@style/EditText.GlobalTextForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_global_edit"
+                        android:hint="@string/signup_lastname"
+                        android:inputType="textCapWords"
+                        android:text="@={viewModel.name}" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/EditSignupLastName"
+                        style="@style/EditText.GlobalTextForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_global_edit"
+                        android:layout_marginTop="@dimen/margin_global_20dp"
+                        android:hint="@string/signup_firstname"
+                        android:inputType="textCapWords"
+                        android:text="@={viewModel.lastName}" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editSignupEmail"
+                        style="@style/EditText.GlobalTextForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_global_edit"
+                        android:layout_marginTop="@dimen/margin_global_20dp"
+                        android:drawablePadding="12dp"
+                        android:hint="@string/signup_mail"
+                        android:inputType="textEmailAddress"
+                        android:text="@={viewModel.email}" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editSignupPassword"
+                        style="@style/EditText.GlobalTextForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_global_edit"
+                        android:layout_marginTop="@dimen/margin_global_10dp"
+                        android:hint="@string/signup_password"
+                        android:inputType="textPassword"
+                        android:text="@={viewModel.password}"
+                        app:backgroundTint="@color/grey_basic" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_global_18dp"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkSignupNotice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="@dimen/margin_global_18dp"
+                            android:button="@drawable/check_selector_green"
+                            android:checked="@={viewModel.noticeCheck}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textSignupNotice"
+                            style="@style/TextView.GlobalBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/margin_global_5dp"
+                            android:padding="@dimen/padding_global_5dp"
+                            android:text="@{viewModel.notice}"
+                            android:textSize="@dimen/font_11sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_global_18dp"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkSignupPartners"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="@dimen/margin_global_10dp"
+                            android:button="@drawable/check_selector_green"
+                            android:checked="@={viewModel.partnersCheck}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textSignupPartners"
+                            style="@style/TextView.GlobalBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/margin_global_5dp"
+                            android:onClick="@{(view) ->viewModel.onPartnersClicked(!safeUnbox(viewModel.partnersCheck))}"
+                            android:text="@string/signup_offer_one"
+                            android:textSize="@dimen/font_11sp" />
+
+                    </LinearLayout>
+
+
+                    <com.mvvm.ui.view.CustomButton
+                        android:id="@+id/buttonSignupSubmit"
+                        style="@style/Button.GlobalGray"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_global_15dp"
+                        android:onClick="@{(view) ->viewModel.onSignUpClicked()}"
+                        android:text="@string/signin_submit" />
+
+
+                    <com.mvvm.ui.view.CustomButton
+                        android:id="@+id/buttonSignupSingnin"
+                        style="@style/Button.SignInAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_global_20dp"
+                        android:layout_marginBottom="@dimen/margin_global_15dp"
+                        android:onClick="@{(view) ->viewModel.onSignInClicked()}"
+                        android:text="@string/signup_already" />
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextView.GlobalBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:autoLink="web|email"
+                    android:background="@color/grey_light"
+                    android:text="@string/signup_legal_notice" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

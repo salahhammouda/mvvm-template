@@ -1,0 +1,258 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'kotlin-kapt'
+
+
+ext {
+    // Application version
+    VERSION_CODE          = 16
+    VERSION_NAME          = '3.0.0'
+
+    MIN_SDK_VERSION = 19
+    TARGET_SDK_VERSION = 27
+    ANDROID_SUPPORT_LIBRARY_VERSION = "1.0.0"
+    GOOGLE_PLAY_SERVICES_LIBRARY_VERSION = "11.4.2"
+    APPCOMPAT = "1.1.0-alpha01"
+    CORE_KTX = "1.1.0-alpha03"
+    CONSTRAINTLAYOUT = "2.0.0-alpha2"
+    JUNIT = "4.12"
+    RUNNER = "1.1.0-alpha4"
+    ESPRESSO_CORE = "3.1.0-alpha4"
+
+    ANDROID_MATERIAL_VERSION="1.0.0-rc01"
+
+    ROOM_VERSION = "1.1.1"
+    RXJAVA_ROOM_VERSION = "1.1.0"
+    PICASSO_VERSION = "2.71828"
+    DAGGER_VERSION = "2.16"
+    GSON_VERSION = "2.8.2"
+    PREFERENCES_VERSION = "0.1.4"
+    RXANDROID_VERSION = "2.0.1"
+    RXJAVA_VERSION = "2.0.6"
+    RETROFIT_VERSION = "2.4.0"
+    RETROFIT_RXJAVA_VERSION = "2.4.0"
+    OKHTTP3_LOGGING_INTERCEPTOR_VERSION = "3.10.0"
+    NAVIGATION = "1.0.0-alpha09"
+    LEAKCANARY_VERSION = "1.6.2"
+    LIFECYCLE_VERSION = "2.0.0"
+    MULTI_DEX = "1.0.3"
+    OKHTTP3_LOGGING = "3.12.0"
+    DATABINDING = "3.1.4"
+    PAGING = "1.0.1"
+    SECURE_PREFERENCES = "0.1.4"
+    RETROFIT_MOSHI="2.5.0"
+    KOTLIN_MOSHI="1.8.0"
+
+
+
+    //test
+    JUNIT = "4.12"
+    TEST_CORE = "1.1.0"
+    MOCKITO_CORE = "2.23.4"
+    MODULE_JUNIT = "4:1.6.4"
+    API_MOCKITO = "1.6.3"
+    ROBOLECTRIC = "3.6.1"
+    ROBOLECTRIC_MULTIDEX = "3.4.2"
+    TEST_RUNNER = "1.1.1"
+    ASSERTIONS_JUNIT="1.1.0"
+    GOOGLE_TRUTH = "0.42"
+    ESPRESSO="3.1.1"
+    MOCKITO_ANDROID_TEST="2.23.4"
+    FINDBUGS_JSR305="3.0.2"
+}
+
+
+android {
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    kapt { generateStubs = true }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.mvvm.template"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+    buildTypes {
+
+        debug {
+            debuggable true
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
+            buildConfigField("String", "API_VARIANT", '"debugvariant"')
+
+        }
+        release {
+
+            buildConfigField("String", "API_VARIANT", '"releasevariant"')
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+    // Specifies one flavor dimension.
+    flavorDimensions "version"
+    productFlavors {
+        product1 {
+            dimension "version"
+            buildConfigField("String", "BASE_URL", '"http://install.anypli.com/"')
+        }
+        product2 {
+            dimension "version"
+            buildConfigField("String", "BASE_URL", '"http://install.anypli.com/"')
+        }
+    }
+}
+
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //multidex
+    implementation 'com.android.support:multidex:' + MULTI_DEX
+
+    //required dependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    //Android x
+    implementation 'androidx.appcompat:appcompat:' + APPCOMPAT
+    implementation 'androidx.core:core-ktx:' + CORE_KTX
+    implementation 'androidx.constraintlayout:constraintlayout:' + CONSTRAINTLAYOUT
+    implementation 'androidx.legacy:legacy-support-v4:' + ANDROID_SUPPORT_LIBRARY_VERSION
+    implementation 'androidx.appcompat:appcompat:' + ANDROID_SUPPORT_LIBRARY_VERSION
+
+
+    implementation 'com.google.android.material:material:' + ANDROID_MATERIAL_VERSION
+
+
+    //Paging
+    implementation "android.arch.paging:runtime:" + PAGING
+
+    //other
+    implementation "com.scottyab:secure-preferences-lib:" + PREFERENCES_VERSION
+    implementation "android.arch.persistence.room:runtime:" + ROOM_VERSION
+    implementation "android.arch.persistence.room:rxjava2:" + RXJAVA_ROOM_VERSION
+    implementation "com.google.code.gson:gson:" + GSON_VERSION
+
+    // Dagger core
+    implementation "com.google.dagger:dagger:" + DAGGER_VERSION
+    implementation "com.google.dagger:dagger-android-support:" + DAGGER_VERSION
+    implementation "com.google.dagger:dagger-android:" + DAGGER_VERSION
+
+    implementation "com.squareup.retrofit2:retrofit:" + RETROFIT_VERSION
+    implementation "com.squareup.retrofit2:adapter-rxjava2:" + RETROFIT_RXJAVA_VERSION
+    implementation "com.squareup.okhttp3:logging-interceptor:" + OKHTTP3_LOGGING
+    implementation "com.squareup.picasso:picasso:" + PICASSO_VERSION
+    implementation "io.reactivex.rxjava2:rxandroid:" + RXANDROID_VERSION
+    implementation "io.reactivex.rxjava2:rxjava:" + RXJAVA_VERSION
+
+
+    implementation "com.squareup.retrofit2:converter-moshi:"+RETROFIT_MOSHI
+    implementation "com.squareup.moshi:moshi:"+KOTLIN_MOSHI
+    implementation "com.squareup.moshi:moshi-kotlin:"+KOTLIN_MOSHI
+
+
+
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:" + LEAKCANARY_VERSION
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:" + LEAKCANARY_VERSION
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:" + LIFECYCLE_VERSION
+
+    //jetpack
+    implementation "android.arch.navigation:navigation-fragment:" + NAVIGATION
+    implementation "android.arch.navigation:navigation-ui:" + NAVIGATION
+
+
+    //secure-preferences
+    implementation 'com.scottyab:secure-preferences-lib:'+SECURE_PREFERENCES
+
+
+    kapt "android.arch.persistence.room:compiler:" + ROOM_VERSION
+    kapt "androidx.lifecycle:lifecycle-compiler:" + LIFECYCLE_VERSION
+    kapt "com.google.dagger:dagger-compiler:" + DAGGER_VERSION
+    kapt "com.google.dagger:dagger-android-processor:" + DAGGER_VERSION
+    kapt 'com.android.databinding:compiler:' + DATABINDING
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:"+KOTLIN_MOSHI
+
+    // Required -- JUnit 4 framework
+    testImplementation 'junit:junit:' + JUNIT
+    // Optional -- Robolectric environment
+    testImplementation 'androidx.test:core:' + TEST_CORE
+    // Optional -- Mockito framework
+    testImplementation 'org.mockito:mockito-core:' + MOCKITO_CORE
+    testImplementation 'org.powermock:powermock-module-junit' + MODULE_JUNIT
+    testImplementation 'org.powermock:powermock-api-mockito:' + API_MOCKITO
+
+    // robolectric
+    testImplementation "org.robolectric:robolectric:" + ROBOLECTRIC
+    testImplementation "org.robolectric:multidex:" + ROBOLECTRIC_MULTIDEX
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation 'androidx.test:runner:' + TEST_RUNNER
+    androidTestImplementation 'androidx.test:rules:' + TEST_RUNNER
+
+    // Assertions
+    androidTestImplementation 'androidx.test.ext:junit:' + ASSERTIONS_JUNIT
+    androidTestImplementation 'androidx.test.ext:truth:' + ASSERTIONS_JUNIT
+
+    androidTestImplementation 'com.google.truth:truth:' + GOOGLE_TRUTH
+
+
+    // Espresso dependencies
+    androidTestImplementation 'androidx.test.espresso:espresso-core:'+ESPRESSO
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:'+ESPRESSO
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:'+ESPRESSO
+    androidTestImplementation 'androidx.test.espresso:espresso-accessibility:'+ESPRESSO
+    androidTestImplementation 'androidx.test.espresso:espresso-web:'+ESPRESSO
+
+    // The following Espresso dependency can be either "implementation"
+    // or "androidTestImplementation", depending on whether you want the
+    // dependency to appear on your APK's compile classpath or the test APK
+    // classpath.
+    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:'+ESPRESSO
+
+    androidTestImplementation 'org.mockito:mockito-android:'+MOCKITO_ANDROID_TEST
+
+    implementation("com.google.code.findbugs:jsr305:"+FINDBUGS_JSR305) {
+        force = true
+    }
+}
+
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion ANDROID_SUPPORT_LIBRARY_VERSION
+            }
+        }
+        if (requested.group == 'com.google.android.gms') {
+            details.useVersion GOOGLE_PLAY_SERVICES_LIBRARY_VERSION
+        }
+        if (requested.group == 'com.google.firebase') {
+            details.useVersion GOOGLE_PLAY_SERVICES_LIBRARY_VERSION
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    tools:context=".ui.home.HomeActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mvvm.ui.home.task2.TwoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#887"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.time}" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/red_basic"
+            android:gravity="center"
+            android:minHeight="@dimen/min_height_global_button"
+            android:onClick="@{(view)->viewModel.onActionTaskTwoToFourClicked()}"
+            android:text="@string/home_click_me" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTwoContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_basic"
+            app:data="@{viewModel.news}" />
+
+    </LinearLayout>
+
+</layout>

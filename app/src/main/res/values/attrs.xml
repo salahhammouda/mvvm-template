@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="toolbar_style">
+        <attr name="ch_status_color" format="color"/>
+        <attr name="ct_background" format="color"/>
+        <attr name="ct_has_title" format="boolean"/>
+        <attr name="ct_title_text" format="string"/>
+        <attr name="ct_title_color" format="color"/>
+        <attr name="ct_title_drawable" format="integer"/>
+        <attr name="ct_start_action_drawable" format="integer"/>
+        <attr name="ct_start_action_text" format="string"/>
+        <attr name="ct_start_action_text_color" format="color"/>
+        <attr name="ct_start_action_text_font" format="reference"/>
+        <attr name="ct_end_action_drawable" format="integer"/>
+        <attr name="ct_end_action_text" format="string"/>
+        <attr name="ct_end_action_text_color" format="color"/>
+        <attr name="ct_end_action_text_font" format="reference"/>
+    </declare-styleable>
+
+
+</resources>

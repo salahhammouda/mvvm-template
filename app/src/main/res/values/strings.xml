@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">MVVM-Template</string>
+
+    <!--global message-->
+    <string name="global_ok">Ok</string>
+    <string name="global_cancel">Annuler</string>
+
+    <!--global error-->
+    <string name="global_error_server">Une erreur est survenue. Merci de réessayer plus tard.</string>
+    <string name="global_error_unavailable_network">Merci de vérifier votre connexion.</string>
+    <string name="global_error_invalid_email_format">Veuillez saisir une adresse e-mail valide.</string>
+    <string name="global_error_connection">Merci de vérifier votre connexion.</string>
+    <string name="global_error_legal_notice">Merci d\'accepter les règlements du jeu et les mentions légales pour vous inscrire.</string>
+    <string name="global_error_empty">Veuillez remplir tous les champs.</string>
+    <string name="global_error_password_length">Veuillez saisir un mot de passe qui contient au moins 6 caractères.</string>
+    <string name="global_error_first_length">Veuillez saisir un prénom qui contient au maximum 25 caractères.</string>
+    <string name="global_error_last_length">Veuillez saisir un nom qui contient au maximum 25 caractères.</string>
+    <string name="global_error_password_length_max">Veuillez saisir un mot de passe qui contient au maximum 25 caractères.</string>
+    <string name="global_error_mail_length_max">Veuillez saisir un e-mail qui contient au maximum 50 caractères.</string>
+    <string name="global_error_banned_user">Votre compte a été bloqué.</string>
+    <string name="global_error_retry_message">ERROR !! Tap to retry.</string>
+    <string name="global_error_refresh_fail">Refresh failed</string>
+
+
+    <!--splash screen-->
+    <string name="splash_hello">Hello</string>
+    <string name="splash_version">Version :</string>
+    <string name="splash_version_clicked">Clicked Thx !!</string>
+
+
+    <!-- SIGNIN -->
+    <string name="signin_are_u_sign_in">Vous n’êtes pas encore inscrit ?</string>
+    <string name="signin_alredy_signin">Déjà inscrit ?</string>
+    <string name="signin_mail">E-mail</string>
+    <string name="signin_password">Mot de passe</string>
+    <string name="signin_forgotten_pass">Mot de passe oublié</string>
+    <string name="signin_submit">Valider</string>
+    <string name="signin_display_mdp">Afficher le mot de passe.</string>
+    <string name="signin_description_title">Inscrivez-vous\net recevez 1 crédit par jour !</string>
+    <string name="signin_invalid_data">E-mail ou mot de passe incorrect</string>
+
+    <!-- signup -->
+    <string name="signup_not_sign_up">Pas encore de compte ?</string>
+    <string name="signup_already">Vous avez déjà un compte ?</string>
+    <string name="signup_legal_notice">Les données personnelles recueillies dans le cadre de ce jeu sont indispensables à
+        la prise en compte de votre participation (Nom, Prénom, adresse mail, Mobile advertising ID, adresse postale (en
+        cas de gain)). Ces données personnelles feront l’objet d’un traitement automatisé destinés à la société
+        DISTRIBUTION CASINO FRANCE, qui se réserve le droit de les faire traiter dans le cadre de la gestion du jeu par
+        un sous-traitant ou partenaire répondant aux exigences légales relatives à la protection des données
+        personnelles.
+        Les données personnelles sont conservées pendant une durée de 3 mois à compter de la publication de la liste des
+        gagnants. Ces données seront ensuite détruites.
+        Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée et, depuis le 25 mai 2018, au
+        Règlement Général sur la Protection des Données Personnelles (RGPD) du 27 avril 2016, le participant dispose
+        d’un droit d’accès, de rectification, d’effacement, de limitation du traitement, de notification, d’opposition,
+        de portabilité des informations le concernant qu’il peut exercer sur simple demande, accompagner de la
+        photocopie d’une titre d’identité, à l’adresse suivante : contact@xxx.fr
+    </string>
+    <string name="signup_fb_signup">Inscription via Facebook</string>
+    <string name="signup_lastname">Nom*</string>
+    <string name="signup_firstname">Prénom*</string>
+    <string name="signup_password">Mot de passe*</string>
+    <string name="signup_mail">E-mail*</string>
+    <string name="signup_error_unique_mail">Un compte existe déjà avec cette adresse e-mail.</string>
+    <string name="signup_error_not_found">Compte introuvable.</string>
+    <string name="signup_email_hint">Obligatoire pour recevoir vos cadeaux</string>
+    <string name="signup_offer_one">J’accepte de recevoir une offre ciblée, personnalisée et privilégiée de la part de la société organisatrice et de ses</string>
+    <string name="signup_offer_two">partenaires</string>
+
+    <string name="signup_game_rules_one">Je certifie être majeur et j\'accepte %1$s et %2$s.</string>
+    <string name="signup_game_rules_two">le règlement du jeu</string>
+    <string name="signup_game_rules_there">les mentions légales</string>
+
+
+    <!--home screen-->
+    <string name="home_hello">Hello</string>
+    <string name="home_click_me">Click me</string>
+    <string name="home_count_fail">Count Fail !!</string>
+    <string name="home_count_completed">Count completed repeat</string>
+
+
+</resources>
