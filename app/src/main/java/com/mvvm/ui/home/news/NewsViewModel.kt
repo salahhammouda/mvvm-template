@@ -96,7 +96,7 @@ constructor(
     fun onRefresh() {
         updateState(State.REFRESHING)
         compositeDisposable.add(
-                newsRepository.getNewsAndCache(FIRST_PAGE, FIRST_PAGE)
+                newsRepository.getNewsAndCache(FIRST_PAGE, NEWS_PAGE_SIZE)
                         .subscribeOn(schedulerProvider.io())
                         .observeOn(schedulerProvider.ui())
                         .subscribe(
