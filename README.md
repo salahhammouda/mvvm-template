@@ -1,6 +1,6 @@
-# mvvm-template
+# Android MVVM template
 
-MVVM Template using :
+Android MVVM Template using :
 
 * RxJava
 * Dagger2
