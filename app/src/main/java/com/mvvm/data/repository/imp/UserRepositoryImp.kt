@@ -26,20 +26,16 @@ class UserRepositoryImp @Inject constructor(
         email: String,
         password: String,
         option: String
-    ): Single<Response<ProfileResponse>> {
+    ): Single<ProfileResponse> {
         return apiClient.signUpAndCache(email, password, firstName, lastName, option).map {
-            if (it.isSuccessful && it.body() != null) {
-                sharedPreferences.saveUser(it.body()!!.data)
-            }
+            sharedPreferences.saveUser(it.data)
             it
         }
     }
 
-    override fun signInAndCache(email: String, password: String): Single<Response<ProfileResponse>> {
+    override fun signInAndCache(email: String, password: String): Single<ProfileResponse> {
         return apiClient.signIn(email, password).map {
-            if (it.isSuccessful && it.body() != null) {
-                sharedPreferences.saveUser(it.body()!!.data)
-            }
+            sharedPreferences.saveUser(it.data)
             it
         }
     }

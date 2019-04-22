@@ -14,11 +14,11 @@ interface APIClient {
 
     @FormUrlEncoded
     @POST("medamine/paginate/signin.json")
-    fun signIn(@Field("email") email: String, @Field("password") password: String): Single<Response<ProfileResponse>>
+    fun signIn(@Field("email") email: String, @Field("password") password: String): Single<ProfileResponse>
 
     @FormUrlEncoded
     @POST("medamine/paginate/signin.json")
-    fun signUpAndCache(@Field("email") email: String, @Field("password") password: String, @Field("first_name") first_name: String, @Field("last_name") last_name: String, @Field("opt_in") option: String): Single<Response<ProfileResponse>>
+    fun signUpAndCache(@Field("email") email: String, @Field("password") password: String, @Field("first_name") first_name: String, @Field("last_name") last_name: String, @Field("opt_in") option: String): Single<ProfileResponse>
 
 
     @GET("medamine/paginate/paginate.php")

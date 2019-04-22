@@ -10,7 +10,7 @@ interface UserRepository {
 
     fun isLoggedInWithDelay(delay: Long): Single<Optional<User>>
 
-    fun signInAndCache(email: String, password: String): Single<Response<ProfileResponse>>
+    fun signInAndCache(email: String, password: String): Single<ProfileResponse>
 
-    fun signUp(firstName: String, lastName: String, email: String, password: String, option: String): Single<Response<ProfileResponse>>
+    fun signUp(firstName: String, lastName: String, email: String, password: String, option: String): Single<ProfileResponse>
 }

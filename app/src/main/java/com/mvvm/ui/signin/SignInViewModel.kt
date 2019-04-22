@@ -16,18 +16,18 @@ import com.mvvm.ui.home.HomeActivity
 import com.mvvm.ui.password.ResetPasswordActivity
 import com.mvvm.ui.signup.SignUpActivity
 import io.reactivex.disposables.CompositeDisposable
-import retrofit2.Response
+import retrofit2.HttpException
 import javax.inject.Inject
 
 
 class SignInViewModel @Inject
 constructor(
-        application: Application,
-        disposables: CompositeDisposable,
-        schedulerProvider: SchedulerProvider,
-        private val userRepository: UserRepository
+    application: Application,
+    disposables: CompositeDisposable,
+    schedulerProvider: SchedulerProvider,
+    private val userRepository: UserRepository
 ) :
-        BaseAndroidViewModel(application, disposables, schedulerProvider), ToolBarListener {
+    BaseAndroidViewModel(application, disposables, schedulerProvider), ToolBarListener {
 
 
     val email: MutableLiveData<String> = MutableLiveData()
@@ -59,31 +59,31 @@ constructor(
         if (validateFields()) {
             signingIn.value = true
             compositeDisposable.add(
-                    userRepository.signInAndCache(email.value!!, password.value!!)
-                            .subscribeOn(schedulerProvider.io())
-                            .observeOn(schedulerProvider.ui())
-                            .subscribe(onSignInSuccess(), onSignInError())
+                userRepository.signInAndCache(email.value!!, password.value!!)
+                    .subscribeOn(schedulerProvider.io())
+                    .observeOn(schedulerProvider.ui())
+                    .subscribe(onSignInSuccess(), onSignInError())
             )
         }
     }
 
 
-    private fun onSignInSuccess(): (Response<ProfileResponse>) -> Unit = { userResponse ->
+    private fun onSignInSuccess(): (ProfileResponse) -> Unit = { userResponse ->
         signingIn.value = false
-        if (userResponse.isSuccessful && userResponse.body()?.data != null) {
-            navigate(Navigation(HomeActivity::class, arrayOf(userResponse.body()!!.data!!)))
-        } else {
-            when (userResponse.code()) {
-                HttpResponseCode.HTTP_UNAUTHORIZED -> shownSimpleDialog(messageId = R.string.signin_invalid_data)
-                HttpResponseCode.HTTP_BAD_REQUEST -> shownSimpleDialog(messageId = R.string.global_error_banned_user)
-                else -> handleFailStatusCode(userResponse.code())
-            }
-        }
+        navigate(Navigation(HomeActivity::class, arrayOf(userResponse.data)))
     }
 
     private fun onSignInError(): (Throwable) -> Unit = { error ->
         signingIn.value = false
-        handleThrowable(error)
+        if (error is HttpException) {
+            when (error.code()) {
+                HttpResponseCode.HTTP_UNAUTHORIZED -> shownSimpleDialog(messageId = R.string.signin_invalid_data)
+                HttpResponseCode.HTTP_BAD_REQUEST -> shownSimpleDialog(messageId = R.string.global_error_banned_user)
+                else -> handleThrowable(error)
+            }
+        } else {
+            handleThrowable(error)
+        }
     }
 
 

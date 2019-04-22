@@ -11,6 +11,7 @@ import com.mvvm.global.helper.dialog.ChoseDialog
 import com.mvvm.global.helper.dialog.SimpleDialog
 import com.mvvm.global.listener.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
+import retrofit2.HttpException
 import java.io.IOException
 
 
@@ -212,7 +213,12 @@ abstract class BaseAndroidViewModel(
     protected fun handleThrowable(throwable: Throwable) {
         if (throwable is IOException) {
             shownSimpleDialog(messageId = R.string.global_error_unavailable_network)
-        } else {
+        }else if(throwable is HttpException){
+            when (throwable.code()) {
+                //other default handler
+                else ->shownServerErrorSimpleDialog()
+            }
+        }else {
             shownServerErrorSimpleDialog()
         }
     }
@@ -227,17 +233,4 @@ abstract class BaseAndroidViewModel(
         navigation.value = navigationTo
     }
 
-
-    /**
-     * show simple error ok dialog
-     * @param code error
-     *
-     */
-    protected fun handleFailStatusCode(code: Int) {
-
-        when (code) {
-
-            else -> shownServerErrorSimpleDialog()
-        }
-    }
 }

@@ -20,6 +20,7 @@ import com.mvvm.global.utils.*
 import com.mvvm.ui.home.HomeActivity
 import com.mvvm.ui.signin.SignInActivity
 import io.reactivex.disposables.CompositeDisposable
+import retrofit2.HttpException
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -139,22 +140,21 @@ constructor(
     }
 
 
-    private fun onSignInSuccess(): (Response<ProfileResponse>) -> Unit = { userResponse ->
+    private fun onSignInSuccess(): (ProfileResponse) -> Unit = { userResponse ->
         hideBlockProgressBar()
-        if (userResponse.isSuccessful && userResponse.body()?.data != null) {
-            navigate(Navigation(HomeActivity::class, arrayOf(userResponse.body()!!.data!!)))
-        } else {
-            when (userResponse.code()) {
-                //TODO handling other error
-                HttpResponseCode.HTTP_PAYMENT_REQUIRED -> shownSimpleDialog(messageId = R.string.global_error_banned_user)
-                else -> handleFailStatusCode(userResponse.code())
-            }
-        }
+        navigate(Navigation(HomeActivity::class, arrayOf(userResponse.data)))
     }
 
     private fun onSignInError(): (Throwable) -> Unit = { error ->
         hideBlockProgressBar()
-        handleThrowable(error)
+        if(error is HttpException){
+            when (error.code()) {
+                HttpResponseCode.HTTP_PAYMENT_REQUIRED -> shownSimpleDialog(messageId = R.string.global_error_banned_user)
+                else -> handleThrowable(error)
+            }
+        }else{
+            handleThrowable(error)
+        }
     }
 
     fun onSignInClicked() {
